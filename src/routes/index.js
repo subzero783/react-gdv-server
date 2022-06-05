@@ -9,7 +9,11 @@ router.use(express.json());
 
 const dotenv = require('dotenv');
 dotenv.config();
- 
+
+
+router.get('/', (req, res)=>{
+  res.send(`Working!`);
+}); 
 
 router.get('/newsletter-email', (req, res)=>{
   addEmailToNewsletter(req, res);
