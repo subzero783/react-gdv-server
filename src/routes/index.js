@@ -1,14 +1,14 @@
 
 
 
-import express from 'express';
+const express = require('express');
 const router = express.Router();
-const addEmailToNewsletter = require('../includes/add-email-to-newsletter');
-
 router.use(express.json());
 
 const dotenv = require('dotenv');
 dotenv.config();
+
+const addEmailToNewsletter = require('../includes/add-email-to-newsletter');
 
 
 router.get('/', (req, res)=>{

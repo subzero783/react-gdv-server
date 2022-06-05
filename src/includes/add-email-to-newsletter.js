@@ -1,9 +1,9 @@
 
-import dotenv from 'dotenv';
+
+const dotenv = require('dotenv');
 dotenv.config();
 
-import url from 'url';
-
+const url = require('url');
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const mongoUri = process.env.MONGODB_URI;

@@ -1,15 +1,12 @@
 
 
 
-import express from 'express';
-// import axios from 'axios';
-
+const express = require('express');
 const app = express();
 
 const port = process.env.PORT || 8000;
 
-const mainRoutes = require('./routes');
-
+const mainRoutes = require('./src/routes');
 app.use(mainRoutes);
 
 app.use((req, res, next)=>{
