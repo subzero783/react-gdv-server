@@ -39,8 +39,6 @@ async function addEmailToNewsletter( req, res ){
             emailSentMessage = 'Something went wrong!'
         }
 
-        console.log(emailSentMessage);
-
         res.header('Access-Control-Allow-Origin', '*');
         res.send({
             data: emailSentMessage
