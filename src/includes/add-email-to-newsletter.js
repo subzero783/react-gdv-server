@@ -2,20 +2,11 @@
 
 const dotenv = require('dotenv');
 dotenv.config();
-
+const client = require('../includes/databaseConnect');
 const url = require('url');
-
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const mongoUri = process.env.MONGODB_URI;
 
 
 async function addEmailToNewsletter( req, res ){
-    const client = new MongoClient(mongoUri, { 
-        useNewUrlParser: true, 
-        useUnifiedTopology: true, 
-        serverApi: ServerApiVersion.v1 
-    });
-
     try {
 
 

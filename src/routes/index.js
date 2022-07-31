@@ -9,6 +9,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const addEmailToNewsletter = require('../includes/add-email-to-newsletter');
+const addContactPageEmail = require('../includes/add-contact-page-email');
 
 
 router.get('/', (req, res)=>{
@@ -17,6 +18,10 @@ router.get('/', (req, res)=>{
 
 router.get('/newsletter-email', (req, res)=>{
   addEmailToNewsletter(req, res);
+});
+
+router.get('/contact-page-email', (req, res)=>{
+  addContactPageEmail(req, res);
 });
 
 module.exports = router;
