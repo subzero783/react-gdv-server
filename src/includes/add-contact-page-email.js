@@ -50,15 +50,18 @@ async function addContactPageEmail( req, res ){
         })
 
         let transporter = nodeMailer.createTransport({
-            service: 'hotmail',
+            // service: 'hotmail',
+            host: 'smtp.sendgrid.net',
+            port: 465, 
+            secure: true, 
             auth: {
                 user: process.env.SEND_EMAIL_EMAIL,
-                pass: `${process.env.SEND_EMAIL_PASS}`
+                pass: process.env.SEND_EMAIL_PASS
             }
         });
 
         let mailOptions = {
-            from: '"Galeria del Valle" <'+process.env.SEND_EMAIL_EMAIL+'>', // sender address
+            from: '"Galeria del Valle" <'+process.env.SEND_EMAIL_USER_EMAIL+'>', // sender address
             to: queryObject.email, // list of receivers
             subject: 'SUBJECT LINE TEST', // Subject line
             text: '<h1>hello</h1>', // plain text body
