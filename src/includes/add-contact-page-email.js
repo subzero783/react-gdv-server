@@ -15,7 +15,9 @@ const nodeMailer = require('nodemailer');
 router.use(bodyParser.urlencoded({extended: true}));
 router.use(bodyParser.json());
 
+const contactHTML1 = require('../html-emails/contact-page-html-email-1.html');
 
+console.log(contactHTML1);
 
 async function addContactPageEmail( req, res ){
 
@@ -49,8 +51,7 @@ async function addContactPageEmail( req, res ){
             data: contactEmailMessage
         })
 
-        let transporter = nodeMailer.createTransport({
-            // service: 'hotmail',
+        const transporter = nodeMailer.createTransport({ 
             host: 'smtp.sendgrid.net',
             port: 465, 
             secure: true, 
@@ -60,20 +61,29 @@ async function addContactPageEmail( req, res ){
             }
         });
 
-        let mailOptions = {
+        const userOptions = {
             from: '"Galeria del Valle" <'+process.env.SEND_EMAIL_USER_EMAIL+'>', // sender address
             to: queryObject.email, // list of receivers
-            subject: 'SUBJECT LINE TEST', // Subject line
-            text: '<h1>hello</h1>', // plain text body
+            subject: 'Gracias por Contactar a Galeria del Valle', // Subject line
+            //text: '<h1>hello</h1>', // plain text body
             html: '<b>NodeJS Email Tutorial</b>' // html body
         };
   
-        transporter.sendMail(mailOptions, (error, info) => {    
+        // Email for User
+        transporter.sendMail(userOptions, (error, info) => {    
             if (error) {
                 return console.log(error);
             }
             console.log('Message %s sent: %s', info.messageId, info.response);
         });
+
+        // Email for Administrators 
+        // transporter.sendMail(adminOptions, (error, info)=>{
+        //     if(error){
+        //         return console.log(error);
+        //     }
+        //     console.log('Message %s sent: %s', info.messageId, info.response);
+        // })
         
 
 
