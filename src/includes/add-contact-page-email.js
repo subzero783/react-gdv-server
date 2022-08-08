@@ -15,14 +15,11 @@ const nodeMailer = require('nodemailer');
 router.use(bodyParser.urlencoded({extended: true}));
 router.use(bodyParser.json());
 
-const contactHTML1 = require('../html-emails/contact-page-html-email-1.html');
-
-console.log(contactHTML1);
+// const contactHTML1 = require('../html-emails/contact-page-html-email-1.html');
 
 async function addContactPageEmail( req, res ){
 
     try {
-
 
         const queryObject = url.parse(req.url, true).query;
 
